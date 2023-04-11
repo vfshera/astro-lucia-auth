@@ -1,4 +1,4 @@
-# Astro Lucial Auth
+# Astro Lucia Auth
 
 This project includes a mock mailbox.
 
