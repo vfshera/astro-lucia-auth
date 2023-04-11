@@ -1,35 +1,9 @@
 ---
-import { isValidFormSubmission } from "@/auth/utils/forms/submission";
-import MainLayout from "@/layouts/MainLayout.astro";
-import { auth } from "@/auth/lucia";
-
-const authRequest = auth.handleRequest(Astro);
-const handleFormSubmission = async () => {
-  const validSubmission = isValidFormSubmission(Astro.request);
-  if (!validSubmission) return null;
-  const session = await authRequest.validate();
-  if (!session) return null;
-  await auth.invalidateSession(session.sessionId);
-  authRequest.setSession(null);
-};
-
-const response = await handleFormSubmission();
-if (response) return response;
-
-const { user } = await authRequest.validateUser();
-if (!user) {
-  return Astro.redirect("/login", 302);
-}
-if (!user.emailVerified) {
-  // TODO
-  return Astro.redirect("/email-verification", 302);
-}
+import Layout from "@/layouts/Layout.astro";
 ---
 
-<MainLayout>
-  <h1>Welcome, user</h1>
-  <p>Your email is {user.email}</p>
-  <form method="post">
-    <input type="submit" value="Sign out" />
-  </form>
-</MainLayout>
+<Layout>
+  <main class="h-screen w-full flex flex-col justify-center items-center">
+    <h1>Welcome to Astro Lucia Demo</h1>
+  </main>
+</Layout>
