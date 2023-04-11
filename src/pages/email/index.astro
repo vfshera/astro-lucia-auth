@@ -1,7 +1,6 @@
 ---
 import { getEmails } from "@/auth/email";
-
-import EmailLayout from "src/layouts/EmailLayout.astro";
+import EmailLayout from "@/layouts/EmailLayout.astro";
 
 const emailAddressQuery = Astro.url.searchParams.get("q") ?? "";
 const emails = await getEmails(emailAddressQuery);
