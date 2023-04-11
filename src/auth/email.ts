@@ -1,6 +1,7 @@
 import { prismaClient } from "@/auth/db";
 import { customAlphabet } from "nanoid";
 import type { Email as DatabaseEmail } from "@prisma/client";
+import { APP_URL } from "@/constants";
 
 const sendEmail = async (
   emailAddress: string,
@@ -25,7 +26,7 @@ export const sendEmailVerificationEmail = async (
   emailAddress: string,
   verificationToken: string
 ) => {
-  const verificationLink = `http://localhost:3000/email-verification/${verificationToken}`;
+  const verificationLink = `${APP_URL}/auth/email-verification/${verificationToken}`;
   const emailContent = `Please verify your email by clicking the link below:<br/><br/>
 <a href="${verificationLink}">${verificationLink}</a>`;
   await sendEmail(emailAddress, "Email verification", emailContent);
@@ -35,7 +36,7 @@ export const sendPasswordResetEmail = async (
   emailAddress: string,
   resetToken: string
 ) => {
-  const resetLink = `http://localhost:3000/password-reset/${resetToken}`;
+  const resetLink = `${APP_URL}/auth/password-reset/${resetToken}`;
   const emailContent = `Please reset your password via the link below:<br/><br/>
     
 <a href="${resetLink}">${resetLink}</a>`;
