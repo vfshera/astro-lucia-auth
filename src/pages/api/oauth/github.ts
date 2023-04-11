@@ -13,8 +13,6 @@ export const get: APIRoute = async (context) => {
     const { existingUser, providerUser, createUser } =
       await githubAuth.validateCallback(code);
 
-    console.log({ existingUser, providerUser, createUser });
-
     const user =
       existingUser ??
       (await createUser({
