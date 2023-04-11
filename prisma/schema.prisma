@@ -12,6 +12,7 @@ datasource db {
 
 model AuthUser {
   id             String        @id @unique
+  username       String?        
   email          String        @unique
   email_verified Boolean
   auth_session   AuthSession[]

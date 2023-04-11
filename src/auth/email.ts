@@ -1,4 +1,4 @@
-import { prismaClient } from "@/auth/db";
+import { prismaClient } from "@/db";
 import { customAlphabet } from "nanoid";
 import type { Email as DatabaseEmail } from "@prisma/client";
 import { APP_URL } from "@/constants";

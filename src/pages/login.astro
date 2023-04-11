@@ -64,7 +64,12 @@ if (user) {
     <input id="password" name="password" type="password" /><br />
     <input type="submit" value="Continue" />
   </form>
+  <a
+    href="/api/oauth?provider=github"
+    class="mb-2 w-full cursor-pointer rounded border bg-black px-2 py-1.5 font-medium text-white text-center"
+    >Continue with Github</a
+  >
   {errorMessage && <p class="error">{errorMessage}</p>}
-  <a href="/password-reset">Forgot password?</a>
+  <a href="/auth/password-reset">Forgot password?</a>
   <a href="/signup">Create an account</a>
 </MainLayout>

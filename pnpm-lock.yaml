@@ -10,6 +10,9 @@ dependencies:
   '@lucia-auth/adapter-prisma':
     specifier: ^1.0.0
     version: 1.0.0(lucia-auth@1.0.0)
+  '@lucia-auth/oauth':
+    specifier: ^1.0.0
+    version: 1.0.0(lucia-auth@1.0.0)
   '@lucia-auth/tokens':
     specifier: ^1.0.0
     version: 1.0.0(lucia-auth@1.0.0)
@@ -636,6 +639,14 @@ packages:
 
   /@lucia-auth/adapter-prisma@1.0.0(lucia-auth@1.0.0):
     resolution: {integrity: sha512-ThJuXKHJS6GQ/JcTe3BXgM6Fip5klQ9lSOQBL2zMpxZwUZQGNWXEigRX9ah8AfFQxbgEG0WcdXhbXWeHsRS3yw==}
+    peerDependencies:
+      lucia-auth: 1.x
+    dependencies:
+      lucia-auth: 1.0.0
+    dev: false
+
+  /@lucia-auth/oauth@1.0.0(lucia-auth@1.0.0):
+    resolution: {integrity: sha512-2X3wS4+CEEuYc6R4wCMmcUM0aYltuoQwORlauG35PzygIg9tc+Bv4pXsJ8t6Sbvo47gUBGYhZbMaggk5A9BUWA==}
     peerDependencies:
       lucia-auth: 1.x
     dependencies:
