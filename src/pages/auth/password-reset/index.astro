@@ -7,7 +7,7 @@ import {
   isValidFormSubmission,
 } from "@/auth/utils/forms/submission";
 
-import MainLayout from "src/layouts/MainLayout.astro";
+import Layout from "src/layouts/Layout.astro";
 
 const authRequest = auth.handleRequest(Astro);
 
@@ -55,7 +55,7 @@ if (session) {
 }
 ---
 
-<MainLayout>
+<Layout>
   <h1>Reset password</h1>
   <form method="post">
     <label for="email">Email</label>
@@ -68,4 +68,4 @@ if (session) {
       <p class="message">A verification email was sent to your inbox</p>
     )
   }
-</MainLayout>
+</Layout>

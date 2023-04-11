@@ -1,7 +1,7 @@
 ---
 import { auth, passwordResetToken } from "@/auth/lucia";
 import { isValidFormSubmission } from "@/auth/utils/forms/submission";
-import MainLayout from "@/layouts/MainLayout.astro";
+import Layout from "@/layouts/Layout.astro";
 
 let errorMessage = "";
 
@@ -39,7 +39,7 @@ const response = await handleFormSubmission();
 if (response) return response;
 ---
 
-<MainLayout>
+<Layout>
   <h1>Reset password</h1>
   <form method="post">
     <label for="new-password">New password</label>
@@ -48,4 +48,4 @@ if (response) return response;
     <input type="submit" value="Reset password" />
   </form>
   {errorMessage && <p class="error">{errorMessage}</p>}
-</MainLayout>
+</Layout>

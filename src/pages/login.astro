@@ -4,7 +4,8 @@ import {
   emailRegex,
   isValidFormSubmission,
 } from "@/auth/utils/forms/submission";
-import MainLayout from "@/layouts/MainLayout.astro";
+import { DASHBOARD_HOME } from "@/constants";
+import Layout from "@/layouts/Layout.astro";
 import { LuciaError } from "lucia-auth";
 
 const authRequest = auth.handleRequest(Astro);
@@ -30,7 +31,7 @@ const handleFormSubmission = async (): Promise<Response | null> => {
     const key = await auth.useKey("email", email, password);
     const session = await auth.createSession(key.userId);
     authRequest.setSession(session);
-    return Astro.redirect("/", 302);
+    return Astro.redirect(DASHBOARD_HOME, 302);
   } catch (e) {
     if (e instanceof LuciaError && e.message === "AUTH_INVALID_KEY_ID") {
       errorMessage = "Incorrect email or password";
@@ -51,11 +52,11 @@ if (formSubmissionResponse) return formSubmissionResponse;
 const { user } = await authRequest.validateUser();
 if (user) {
   if (!user.emailVerified) return Astro.redirect("/email-verification", 302);
-  return Astro.redirect("/", 302);
+  return Astro.redirect(DASHBOARD_HOME, 302);
 }
 ---
 
-<MainLayout>
+<Layout>
   <h1>Sign in</h1>
   <form method="post">
     <label for="email">Email</label><br />
@@ -72,4 +73,4 @@ if (user) {
   {errorMessage && <p class="error">{errorMessage}</p>}
   <a href="/auth/password-reset">Forgot password?</a>
   <a href="/signup">Create an account</a>
-</MainLayout>
+</Layout>
